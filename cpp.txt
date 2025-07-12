@@ -1,0 +1,167 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+struct future {
+    float age;
+    char name[50];
+    char dob[20];
+    char rashi[25];
+    char ratan[25];
+    char day[25];
+    char dhatu[25];
+    char quantity[25];
+
+    void enter() {
+        cout << "\n\n\t\t\t\t--- Future Calculator ---\n";
+        cout << "\nFor seeing your future please give the following information:\n";
+        cout << "Enter your Age: ";
+        cin >> age;
+        cout << "Enter your Name: ";
+        cin >> name;
+        cout << "Enter your Date of Birth (DD/MM/YYYY): ";
+        cin >> dob;
+        cout << "\nCalculating your future...\n\n";
+    }
+
+    void display() {
+        cout << "\n--- Your Future Details ---\n";
+        cout << "Name                   : " << name << endl;
+        cout << "Date of Birth          : " << dob << endl;
+        cout << "Rashi / Horoscope      : " << rashi << endl;
+        cout << "Lucky Day              : " << day << endl;
+        cout << "Lucky Metal (Dhatu)    : " << dhatu << endl;
+        cout << "Lucky Gemstone (Ratan) : " << ratan << endl;
+        cout << "Gemstone Weight        : " << quantity << endl;
+    }
+
+    void getcalc();
+};
+
+void future::getcalc() {
+   
+    int dayNum = (dob[0] - '0') * 10 + (dob[1] - '0');
+    int monthNum = (dob[3] - '0') * 10 + (dob[4] - '0');
+    char first = tolower(name[0]);
+    char second = tolower(name[1]);
+    char third = tolower(name[2]);
+
+    if ((first == 'a') || (first == 'c' && second == 'h') || (first == 'l') || (first == 'u')) {
+        strcpy(rashi, "Aries (Mesh)");
+        strcpy(ratan, "Coral (Moonga)");
+        strcpy(day, "Tuesday (Mangalwar)");
+        strcpy(dhatu, "Asht Dhatu");
+        strcpy(quantity, "6-8 ct");
+    }
+    else if (first == 'e' || first == 'v' || (first == 'o')) {
+        strcpy(rashi, "Taurus (Vrish)");
+        strcpy(ratan, "Opel");
+        strcpy(day, "Friday (Shukrawar)");
+        strcpy(dhatu, "Silver and Asht Dhatu");
+        strcpy(quantity, "8-11 ct");
+    }
+    else if (first == 'k' || first == 'g' || (first == 'h' && second == 'a') || (first == 'c' && second == 'h' && third == 'h')) {
+        strcpy(rashi, "Gemini (Mithun)");
+        strcpy(ratan, "Emerald (Panna)");
+        strcpy(day, "Wednesday (Bhudhwar)");
+        strcpy(dhatu, "Asht Dhatu");
+        strcpy(quantity, "8-11 ct");
+    }
+    else if (first == 'h' || first == 'd') {
+        strcpy(rashi, "Cancer (Kark)");
+        strcpy(ratan, "Pearl (Moti)");
+        strcpy(day, "Monday (Somwar)");
+        strcpy(dhatu, "Silver and Asht Dhatu");
+        strcpy(quantity, "8-11 ct");
+    }
+    else if (first == 'm' || first == 't') {
+        strcpy(rashi, "Leo (Singh)");
+        strcpy(ratan, "Ruby (Manik)");
+        strcpy(day, "Sunday (Raviwar)");
+        strcpy(dhatu, "Asht Dhatu");
+        strcpy(quantity, "8-11 ct");
+    }
+    else if (first == 'p' || first == 's' || first == 'n') {
+        strcpy(rashi, "Virgo (Kanya)");
+        strcpy(ratan, "Emerald (Panna)");
+        strcpy(day, "Wednesday (Bhudhwar)");
+        strcpy(dhatu, "Asht Dhatu");
+        strcpy(quantity, "8-11 ct");
+    }
+    else if (first == 'r') {
+        strcpy(rashi, "Libra (Tula)");
+        strcpy(ratan, "Opel");
+        strcpy(day, "Friday (Shukrawar)");
+        strcpy(dhatu, "Silver and Asht Dhatu");
+        strcpy(quantity, "8-11 ct");
+    }
+    else if (first == 'y' || first == 'b' || (first == 'd' && second == 'h')) {
+        strcpy(rashi, "Sagittarius (Dhanu)");
+        strcpy(ratan, "Yellow Sapphire (Pukhraj)");
+        strcpy(day, "Thursday (Guruwar)");
+        strcpy(dhatu, "Gold and Asht Dhatu");
+        strcpy(quantity, "6-8 ct");
+    }
+    else if (first == 'j' || (first == 'k' && second == 'h')) {
+        strcpy(rashi, "Capricorn (Makar)");
+        strcpy(ratan, "Blue Sapphire (Neelam)");
+        strcpy(day, "Saturday (Shaniwar)");
+        strcpy(dhatu, "Panch Dhatu and Silver");
+        strcpy(quantity, "6-8 ct");
+    }
+    else {
+       
+        if ((monthNum == 3 && dayNum >= 21) || (monthNum == 4 && dayNum <= 19))
+            strcpy(rashi, "Aries (Mesh)");
+        else if ((monthNum == 4 && dayNum >= 20) || (monthNum == 5 && dayNum <= 20))
+            strcpy(rashi, "Taurus (Vrish)");
+        else if ((monthNum == 5 && dayNum >= 21) || (monthNum == 6 && dayNum <= 20))
+            strcpy(rashi, "Gemini (Mithun)");
+        else if ((monthNum == 6 && dayNum >= 21) || (monthNum == 7 && dayNum <= 22))
+            strcpy(rashi, "Cancer (Kark)");
+        else if ((monthNum == 7 && dayNum >= 23) || (monthNum == 8 && dayNum <= 22))
+            strcpy(rashi, "Leo (Singh)");
+        else if ((monthNum == 8 && dayNum >= 23) || (monthNum == 9 && dayNum <= 22))
+            strcpy(rashi, "Virgo (Kanya)");
+        else if ((monthNum == 9 && dayNum >= 23) || (monthNum == 10 && dayNum <= 22))
+            strcpy(rashi, "Libra (Tula)");
+        else if ((monthNum == 10 && dayNum >= 23) || (monthNum == 11 && dayNum <= 21))
+            strcpy(rashi, "Scorpio (Vrishchik)");
+        else if ((monthNum == 11 && dayNum >= 22) || (monthNum == 12 && dayNum <= 21))
+            strcpy(rashi, "Sagittarius (Dhanu)");
+        else if ((monthNum == 12 && dayNum >= 22) || (monthNum == 1 && dayNum <= 19))
+            strcpy(rashi, "Capricorn (Makar)");
+        else if ((monthNum == 1 && dayNum >= 20) || (monthNum == 2 && dayNum <= 18))
+            strcpy(rashi, "Aquarius (Kumbh)");
+        else if ((monthNum == 2 && dayNum >= 19) || (monthNum == 3 && dayNum <= 20))
+            strcpy(rashi, "Pisces (Meen)");
+        else
+            strcpy(rashi, "Invalid DOB");
+
+        strcpy(ratan, "Based on Rashi");
+        strcpy(day, "Based on Rashi");
+        strcpy(dhatu, "Based on Rashi");
+        strcpy(quantity, "Based on Rashi");
+        strcpy(ratan, "No details found");
+        strcpy(day, "No details found");
+        strcpy(dhatu, "No details found");
+        strcpy(quantity, "No details found");
+    }
+}
+
+int main() {
+    int x = 1;
+    while (x != 0) {
+        future f;
+        f.enter();
+        f.getcalc();
+        f.display();
+
+        cout << "\n------------------------------------------\n";
+        cout << "Press 0 to Exit or 1 to Try Again: ";
+        cin >> x;
+        cout << "------------------------------------------\n";
+    }
+    cout << "\nThank you for using the Future Calculator!\n";
+    return 0;
+}
